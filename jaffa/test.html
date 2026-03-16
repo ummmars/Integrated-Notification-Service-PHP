@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notification Service Test</title>
+<style>
+body {
+  font-family: system-ui, Arial, sans-serif;
+  max-width: 700px;
+  margin: 40px auto;
+}
+button {
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+pre {
+  background: #111;
+  color: #0f0;
+  padding: 16px;
+  border-radius: 6px;
+  overflow: auto;
+}
+</style>
+</head>
+<body>
+
+<h2>Notification Service Demo</h2>
+
+<p>Click to send a test notification:</p>
+
+<button onclick="sendNotification()">Send</button>
+
+<h3>Response</h3>
+<pre id="output">—</pre>
+
+<script>
+async function sendNotification() {
+  const output = document.getElementById("output");
+  output.textContent = "Sending...";
+
+  try {
+    const res = await fetch("/~usaddique1/jaffa/index.php/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-Key": "7f3c9a4e8b1d2f6a0c5e3b9d7a2c1e8f4b6d0a3c9e1b" 
+
+      },
+      body: JSON.stringify({
+        recipient_id: "11111111-1111-1111-1111-111111111111",
+        template_name: "welcome",
+        variable_data: {
+          name: "John",
+          product: "Health Matters"
+        }
+      })
+    });
+
+    const data = await res.json();
+    output.textContent = JSON.stringify(data, null, 2);
+
+  } catch (err) {
+    output.textContent = "ERROR:\n" + err;
+  }
+}
+</script>
+
+</body>
+</html>

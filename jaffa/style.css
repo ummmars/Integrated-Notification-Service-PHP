@@ -1,0 +1,217 @@
+/* ----------------- Global Styles ----------------- */
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #005eb8;
+    margin-top: 40px;
+    font-size: 28px;
+}
+
+h3 {
+    color: #333;
+}
+
+/* ----------------- Buttons ----------------- */
+.buttons a {
+    display: inline-block;
+    margin: 12px 10px;
+    padding: 14px 22px;
+    background: #005eb8;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.buttons a:hover {
+    background: #004c99;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ----------------- Login Form (setuser.php) ----------------- */
+form input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 250px;
+    font-size: 14px;
+}
+
+form button {
+    padding: 10px 20px;
+    background: #005eb8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #004c99;
+}
+
+/* ----------------- Notification Container ----------------- */
+.notification-container {
+    position: fixed;
+    top: 80px; /* top-center of screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    z-index: 99999; /* always on top */
+    pointer-events: none; /* allow clicks to pass through unless on notification */
+}
+
+/* ----------------- Notification Card ----------------- */
+.notification {
+    display: none; /* hidden until JS triggers */
+    background: #ffffff;
+    border-left: 8px solid #005eb8;
+    border-radius: 8px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    padding: 20px 25px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    opacity: 0;
+    pointer-events: auto; /* allow interaction with buttons inside */
+}
+
+/* ----------------- Notification Animations ----------------- */
+.notification.slide-in {
+    animation: slideInTop 0.5s forwards;
+}
+
+.notification.slide-out {
+    animation: slideOutTop 0.5s forwards;
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutTop {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* ----------------- Notification Stack Effect ----------------- */
+.notification-container:not(:hover) .notification {
+    margin-top: -60px;
+}
+
+.notification-container:hover .notification {
+    margin-top: 10px;
+}
+
+/* ----------------- Notification Text ----------------- */
+.notification h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #005eb8;
+}
+
+.notification p {
+    margin: 8px 0 0 0;
+    color: #333;
+}
+
+/* ----------------- Notification Icons ----------------- */
+.icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+/* ----------------- Dismiss Button ----------------- */
+.dismiss-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #005eb8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.dismiss-btn:hover {
+    background: #004c99;
+}
+
+/* ----------------- Back Button ----------------- */
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #005eb8;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s, transform 0.2s;
+    z-index: 99999;
+}
+
+.back-btn:hover {
+    background: #004c99;
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ----------------- Delete History Button ----------------- */
+.delete-btn {
+    background: #d9534f; /* red */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.delete-btn:hover {
+    background: #c9302c;
+}
+
+/* ----------------- Notification History List ----------------- */
+.history {
+    list-style: none; /* remove bullets */
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+.history li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+}
